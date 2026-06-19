@@ -1,0 +1,13 @@
+name = "servital-worker"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "servital-db"
+database_id = "8ea1a29e-942d-40f6-84a3-341e822c4323"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "d6467ee2136446f48c6bc2527d1e68a4"
+preview_id = "6f56db7b0902447d9bd4fcf35fbb17d1"

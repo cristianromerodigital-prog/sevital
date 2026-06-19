@@ -402,7 +402,7 @@ try {
   if(cfg && cfg.url) GAS_URL = cfg.url;
 } catch(e) {}
 const CONFIG = {
-  CF_URL:      'https://web.cristian-romero-digital.workers.dev',
+  CF_URL:      'https://servital-worker.cristian-romero-digital.workers.dev',
   WSP_NUM:     '5491162557763',
   IG_DEFAULT:  'https://www.instagram.com/cristian.romero.digital/',
   WEB_DEFAULT: 'https://servital.com.ar',
@@ -1196,7 +1196,7 @@ function tipoTabActual() {
 async function checkPedidoExistente() {
   if(!CFG.nombres) return;
   try {
-    const res = await fetch('https://web.cristian-romero-digital.workers.dev/servital_pedidos', { headers: { 'Authorization': 'crd2025' } });
+    const res = await fetch('https://servital-worker.cristian-romero-digital.workers.dev/servital_pedidos', { headers: { 'Authorization': 'crd2025' } });
     const arr = (res.ok ? await res.json() : null) || [];
     arr.filter(p => p.evento === CFG.nombres && p.tipoAlbum)
        .forEach(p => { _pedidosExistentes[p.tipoAlbum] = true; });
@@ -1207,4 +1207,5 @@ checkPedidoExistente();
 </script>
 </body>
 </html>
+
 
