@@ -191,6 +191,16 @@ export default {
       return json({ ok: true });
     }
 
+    // ── GET /api/config ─ config para sesión autenticada ─────────
+    if (req.method === 'GET' && path === '/api/config') {
+      const auth = req.headers.get('Authorization') || '';
+      const token = auth.replace('Bearer ', '');
+      const valid = token && await env.KV.get(`servital_session_${token}`);
+      if (!valid) return json({ error: 'no autorizado' }, 401);
+      const apiToken = await env.KV.get('servital_api_token') || '';
+      return json({ apiToken });
+    }
+
     // ── Health check ──────────────────────────────────────────────
     if (path === '/api/health') {
       return json({ ok: true, worker: 'servital-worker', ts: new Date().toISOString() });
