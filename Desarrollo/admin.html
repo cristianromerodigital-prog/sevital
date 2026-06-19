@@ -309,26 +309,16 @@ tr:hover td{background:rgba(255,255,255,0.02);}
   --violet: #7b4fff;
 }
 
-/* ── FONDO CON GLOW (igual que index) ── */
+/* ── FONDO ── */
 body {
   background: #060d0f !important;
   font-family: 'Inter', sans-serif !important;
-}
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 55% at 15% 15%, rgba(0,200,140,.22) 0%, transparent 60%),
-    radial-gradient(ellipse 55% 45% at 85% 80%, rgba(0,160,220,.18) 0%, transparent 60%);
+  display: flex !important;
 }
 
-/* ── GRAIN ── */
-body::after {
-  content: '';
-  position: fixed; inset: 0; z-index: 300; pointer-events: none; opacity: .018;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px;
-}
+/* ── FIX LAYOUT: eliminar columna fantasma ── */
+.sidebar { width: 220px !important; min-width: 220px !important; max-width: 220px !important; position: fixed !important; }
+.main { margin-left: 220px !important; width: calc(100% - 220px) !important; }
 
 /* ── LOGIN ── */
 #login-screen { background: #060d0f !important; }
@@ -402,21 +392,23 @@ tbody tr:hover td { background: rgba(0,200,140,.04) !important; }
 .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: #00c896 !important; }
 
 /* ── BOTONES ── */
-.btn-add, .btn-save, button[class*="btn-add"], button[class*="btn-save"], button[class*="btn-primary"] {
-  background: linear-gradient(135deg, #00c896, #00a0e0) !important;
-  color: #fff !important;
-  border: none !important;
+.btn-add, .btn-save {
+  background: rgba(0,200,140,.15) !important;
+  color: #00c896 !important;
+  border: 1px solid rgba(0,200,140,.3) !important;
   border-radius: 8px !important;
-  box-shadow: 0 4px 16px rgba(0,200,140,.25) !important;
 }
-.btn-cancel, button[class*="btn-cancel"], button[class*="btn-outline"] {
-  border: 1px solid rgba(0,200,140,.22) !important;
+.btn-add:hover, .btn-save:hover {
+  background: rgba(0,200,140,.25) !important;
+}
+.btn-cancel {
+  border: 1px solid rgba(255,255,255,.12) !important;
   color: rgba(255,255,255,.5) !important;
   background: transparent !important;
   border-radius: 8px !important;
 }
-.btn-cancel:hover, button[class*="btn-cancel"]:hover { border-color: #00c896 !important; color: #00c896 !important; }
-.btn-del, button[class*="btn-del"], button[class*="btn-danger"] {
+.btn-cancel:hover { border-color: rgba(0,200,140,.4) !important; color: #00c896 !important; }
+.btn-del {
   background: transparent !important;
   border: 1px solid rgba(255,80,80,.25) !important;
   color: rgba(255,100,100,.65) !important;
